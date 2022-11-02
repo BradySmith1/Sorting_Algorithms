@@ -9,7 +9,7 @@ def bubble_sort(number_list):
             if number_list[j] > number_list[j + 1]:
                 number_list[j], number_list[j + 1] = number_list[j + 1], number_list[j]
     end_time = timer()
-    return number_list, (end_time - start_time)
+    output_file("BubbleSort", number_list, (end_time - start_time))
 
 
 def insertion_sort(number_list):
@@ -22,7 +22,7 @@ def insertion_sort(number_list):
             j -= 1
         number_list[j + 1] = key
     end_time = timer()
-    return number_list, (end_time - start_time)
+    output_file("InsertionSort", number_list, (end_time - start_time))
 
 
 def merge_sort(number_list):
@@ -56,7 +56,7 @@ def merge_sort(number_list):
             j += 1
             k += 1
     end_time = timer()
-    return number_list, (end_time - start_time)
+    output_file("MergeSort", number_list, (end_time -  start_time))
 
 
 def output_file(name, bubble_list, bubble_elapsed):
@@ -70,12 +70,9 @@ def main():
     number_list = []
     for i in range(number_size):
         number_list.append(random.randint(1, 100000))
-    bubble_list, bubble_elapsed = bubble_sort(number_list)
-    insertion_list, insertion_elapsed = insertion_sort(number_list)
-    merge_list, merge_elapsed = merge_sort(number_list)
-    output_file("Bubble Sort", bubble_list, bubble_elapsed)
-    output_file("Insertion Sort", insertion_list, insertion_elapsed)
-    output_file("Merge Sort", merge_list, merge_elapsed)
+    bubble_sort(number_list.copy())
+    insertion_sort(number_list.copy())
+    merge_sort(number_list.copy())
 
 
 if __name__ == '__main__':
